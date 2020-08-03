@@ -32,7 +32,29 @@ const  kSOURCE = "source";
 const  kNORMALCARTOON = 'normal-cartoon';
 const  kCARTOONBASIC = 'cartoon-basic';
 const  kCARTOONLITE = 'cartoon-lite';
-const  LOADING_IMAGE = "/img/redspinner.svg";
+const  LOADING_IMAGE = "background-image:url('/img/redspinner.svg');";
+const  DEFAULT_IMAGE = "background-image:url('/img/default-image.png');";
+const  FIXED_IMAGE_URL = "background-image:url('{0}');";
+
+
+String.prototype.format = String.prototype.formatUnicorn ||
+function () {
+    "use strict";
+    var str = this.toString();
+    if (arguments.length) {
+        var t = typeof arguments[0];
+        var key;
+        var args = ("string" === t || "number" === t) ?
+            Array.prototype.slice.call(arguments)
+            : arguments[0];
+
+        for (key in args) {
+            str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+        }
+    }
+
+    return str;
+};
 
 
 function getImagesForCartoon_apigateway() {
@@ -204,32 +226,32 @@ function showImagesToBeCartoonized(filename) {
 
             let tGray = images[kGRAY].substr(images[kGRAY].lastIndexOf('?')+1);
             let qGray = images[kGRAY].lastIndexOf('?') > 0 ? "&" + tGray : "";
-            $("#grayImage").attr("src",images[kGRAY]);
+            $("#grayImage").attr("style", FIXED_IMAGE_URL.format(images[kGRAY]) );
             $("#grayHref").attr("href","/" + hash_v +"/gray?e=" + ext + qGray);
 
             let tEP = images[kEP].substr(images[kEP].lastIndexOf('?')+1);
             let qEP = images[kEP].lastIndexOf('?') > 0 ? "&" + tEP : "";
-            $("#edgePreservingImage").attr("src",images[kEP]);
+            $("#edgePreservingImage").attr("style", FIXED_IMAGE_URL.format( images[kEP] ));
             $("#edgePreservingHref").attr("href","/" + hash_v +"/edge-preserving?e=" + ext + qEP );
 
             let tDE = images[kDE].substr(images[kDE].lastIndexOf('?')+1);
             let qDE = images[kDE].lastIndexOf('?') > 0 ? "&" + tDE : "";
-            $("#detailEnhanceImage").attr("src",images[kDE]);
+            $("#detailEnhanceImage").attr("style",FIXED_IMAGE_URL.format( images[kDE] ));
             $("#detailEnhanceHref").attr("href","/" + hash_v +"/detail-enhance?e=" + ext + qDE);
 
             let tStyle = images[kSTYLE].substr(images[kSTYLE].lastIndexOf('?')+1);
             let qStyle = images[kSTYLE].lastIndexOf('?') > 0 ? "&" + tStyle : "";
-            $("#stylizationImage").attr("src",images[kSTYLE]);
+            $("#stylizationImage").attr("style",FIXED_IMAGE_URL.format( images[kSTYLE] ));
             $("#stylizationHref").attr("href","/" + hash_v +"/stylization?e=" + ext + qStyle);
 
             let tPSGray = images[kPS_GRAY].substr(images[kPS_GRAY].lastIndexOf('?')+1);
             let qPSGray = images[kPS_GRAY].lastIndexOf('?') > 0 ? "&" + tPSGray : "";
-            $("#pencilSketchGrayImage").attr("src",images[kPS_GRAY]);
+            $("#pencilSketchGrayImage").attr("style",FIXED_IMAGE_URL.format( images[kPS_GRAY] ));
             $("#pencilSketchGrayHref").attr("href","/" + hash_v +"/pencil-sketch-in-gray?e="+ext + qPSGray);
 
             let tPSColor = images[kPS_COLOR].substr(images[kPS_COLOR].lastIndexOf('?')+1);
             let qPSColor = images[kPS_COLOR].lastIndexOf('?') > 0 ? "&" + tPSColor : "";
-            $("#pencilSketchColorImage").attr("src",images[kPS_COLOR]);
+            $("#pencilSketchColorImage").attr("style",FIXED_IMAGE_URL.format( images[kPS_COLOR] ));
             $("#pencilSketchColorHref").attr("href","/" + hash_v +"/pencil-sketch-in-color?e="+ext + qPSColor);
 
             localStorage.setItem("hashimage", result.data.body.hash);
@@ -239,7 +261,7 @@ function showImagesToBeCartoonized(filename) {
                 let tSketchify = images[kSKETCHIFY].substr(images[kSKETCHIFY].lastIndexOf('?')+1);
                 let qSketchify = images[kSKETCHIFY].lastIndexOf('?') > 0 ? "&" + tSketchify : "";
 
-                $("#sketchifyImage").attr("src",images[kSKETCHIFY]);
+                $("#sketchifyImage").attr("style",FIXED_IMAGE_URL.format( images[kSKETCHIFY] ));
                 $("#sketchifyHref").attr("href","/" + hash_v +"/pencil-sketch-using-sketchify?e="+ext + qSketchify);
             }
             else {
@@ -256,7 +278,7 @@ function showImagesToBeCartoonized(filename) {
                 let tNormalCartoon = images[kNORMALCARTOON].substr(images[kNORMALCARTOON].lastIndexOf('?')+1);
                 let qNormalCartoon = images[kNORMALCARTOON].lastIndexOf('?') > 0 ? "&" + tNormalCartoon : "";
 
-                $("#normalCartoonImage").attr("src",images[kNORMALCARTOON]);
+                $("#normalCartoonImage").attr("style",FIXED_IMAGE_URL.format( images[kNORMALCARTOON] ));
                 $("#normalCartoonHref").attr("href","/" + hash_v +"/normal-cartoon-using-canny?e="+ext + qNormalCartoon);
             }
             else {
@@ -271,7 +293,7 @@ function showImagesToBeCartoonized(filename) {
                 let tCartoonBasic = images[kCARTOONBASIC].substr(images[kCARTOONBASIC].lastIndexOf('?')+1);
                 let qCartoonBasic = images[kCARTOONBASIC].lastIndexOf('?') > 0 ? "&" + tCartoonBasic : "";
 
-                $("#cartoonBasicImage").attr("src",images[kCARTOONBASIC]);
+                $("#cartoonBasicImage").attr("style",FIXED_IMAGE_URL.format( images[kCARTOONBASIC] ));
                 $("#cartoonBasicHref").attr("href","/" + hash_v +"/basic-cartoon-using-adaptivethreshold?e="+ext + qCartoonBasic);
             }
             else {
@@ -285,7 +307,7 @@ function showImagesToBeCartoonized(filename) {
             if (images[kCARTOONLITE]) {
                 let tCartoonLite = images[kCARTOONLITE].substr(images[kCARTOONLITE].lastIndexOf('?')+1);
                 let qCartoonLite = images[kCARTOONLITE].lastIndexOf('?') > 0 ? "&" + tCartoonLite : "";
-                $("#cartoonLiteImage").attr("src",images[kCARTOONLITE]);
+                $("#cartoonLiteImage").attr("style",FIXED_IMAGE_URL.format( images[kCARTOONLITE] ));
                 $("#cartoonLiteHref").attr("href","/" + hash_v +"/cartoon-lite-using-adaptivethreshold?e="+ext + qCartoonLite);
             }
             else {
@@ -344,69 +366,84 @@ function showImagesOnRefreshing() {
      */
     let tGray = images[kGRAY].substr(images[kGRAY].lastIndexOf('?')+1);
     let qGray = images[kGRAY].lastIndexOf('?') > 0 ? "&" + tGray : "";
-    $("#grayImage").attr("src",images[kGRAY]);
+    $("#grayImage").attr("style",FIXED_IMAGE_URL.format( images[kGRAY] ));
     $("#grayHref").attr("href","/" + hash_v +"/gray?e="+ext + qGray );
 
     let tEP = images[kEP].substr(images[kEP].lastIndexOf('?')+1);
     let qEP = images[kEP].lastIndexOf('?') > 0 ? "&" + tEP : "";
-    $("#edgePreservingImage").attr("src",images[kEP]);
+    $("#edgePreservingImage").attr("style",FIXED_IMAGE_URL.format( images[kEP] ));
     $("#edgePreservingHref").attr("href","/" + hash_v +"/edge-preserving?e="+ext+qEP );
 
     let tDE = images[kDE].substr(images[kDE].lastIndexOf('?')+1);
     let qDE = images[kDE].lastIndexOf('?') > 0 ? "&" + tDE : "";
-    $("#detailEnhanceImage").attr("src",images[kDE]);
+    $("#detailEnhanceImage").attr("style",FIXED_IMAGE_URL.format( images[kDE] ));
     $("#detailEnhanceHref").attr("href","/" + hash_v +"/detail-enhance?e="+ext+qDE);
 
     let tStyle = images[kSTYLE].substr(images[kSTYLE].lastIndexOf('?')+1);
     let qStyle = images[kSTYLE].lastIndexOf('?') > 0 ? "&" + tStyle : "";
-    $("#stylizationImage").attr("src",images[kSTYLE]);
+    $("#stylizationImage").attr("style",FIXED_IMAGE_URL.format( images[kSTYLE] ));
     $("#stylizationHref").attr("href","/" + hash_v +"/stylization?e="+ext+qStyle);
 
     let tPSGray = images[kPS_GRAY].substr(images[kPS_GRAY].lastIndexOf('?')+1);
     let qPSGray = images[kPS_GRAY].lastIndexOf('?') > 0 ? "&" + tPSGray : "";
-    $("#pencilSketchGrayImage").attr("src",images[kPS_GRAY]);
+    $("#pencilSketchGrayImage").attr("style",FIXED_IMAGE_URL.format( images[kPS_GRAY] ));
     $("#pencilSketchGrayHref").attr("href","/" + hash_v +"/pencil-sketch-in-gray?e="+ext+qPSGray);
 
     let tPSColor = images[kPS_COLOR].substr(images[kPS_COLOR].lastIndexOf('?')+1);
     let qPSColor = images[kPS_COLOR].lastIndexOf('?') > 0 ? "&" + tPSColor : "";
-    $("#pencilSketchColorImage").attr("src",images[kPS_COLOR]);
+    $("#pencilSketchColorImage").attr("style",FIXED_IMAGE_URL.format( images[kPS_COLOR] ));
     $("#pencilSketchColorHref").attr("href","/" + hash_v +"/pencil-sketch-in-color?e="+ext+qPSColor);
 
     let tSketchify = images[kSKETCHIFY].substr(images[kSKETCHIFY].lastIndexOf('?')+1);
     let qSketchify = images[kSKETCHIFY].lastIndexOf('?') > 0 ? "&" + tSketchify : "";
-    $("#sketchifyImage").attr("src",images[kSKETCHIFY]);
+    $("#sketchifyImage").attr("style",FIXED_IMAGE_URL.format( images[kSKETCHIFY] ));
     $("#sketchifyHref").attr("href","/" + hash_v +"/pencil-sketch-using-sketchify?e="+ext+qSketchify);
 
     let tNormalCartoon = images[kNORMALCARTOON].substr(images[kNORMALCARTOON].lastIndexOf('?')+1);
     let qNormalCartoon = images[kNORMALCARTOON].lastIndexOf('?') > 0 ? "&" + tNormalCartoon : "";
-    $("#normalCartoonImage").attr("src",images[kNORMALCARTOON]);
+    $("#normalCartoonImage").attr("style",FIXED_IMAGE_URL.format( images[kNORMALCARTOON] ));
     $("#normalCartoonHref").attr("href","/" + hash_v +"/normal-cartoon-using-canny?e="+ext+qNormalCartoon);
 
     let tCartoonBasic = images[kCARTOONBASIC].substr(images[kCARTOONBASIC].lastIndexOf('?')+1);
     let qCartoonBasic = images[kCARTOONBASIC].lastIndexOf('?') > 0 ? "&" + tCartoonBasic : "";
-    $("#cartoonBasicImage").attr("src",images[kCARTOONBASIC]);
+    $("#cartoonBasicImage").attr("style",FIXED_IMAGE_URL.format( images[kCARTOONBASIC] ));
     $("#cartoonBasicHref").attr("href","/" + hash_v +"/basic-cartoon-using-adaptivethreshold?e="+ext+qCartoonBasic);
 
     let tCartoonLite = images[kCARTOONLITE].substr(images[kCARTOONLITE].lastIndexOf('?')+1);
     let qCartoonLite = images[kCARTOONLITE].lastIndexOf('?') > 0 ? "&" + tCartoonLite : "";
-    $("#cartoonLiteImage").attr("src",images[kCARTOONLITE]);
+    $("#cartoonLiteImage").attr("style",FIXED_IMAGE_URL.format( images[kCARTOONLITE] ));
     $("#cartoonLiteHref").attr("href","/" + hash_v +"/cartoon-lite-using-adaptivethreshold?e="+ext+qCartoonLite);
 
 }
 
 function showLoadingForSlides() {
 
-    $("#grayImage").attr("src",LOADING_IMAGE);
-    $("#edgePreservingImage").attr("src",LOADING_IMAGE);
-    $("#detailEnhanceImage").attr("src",LOADING_IMAGE);
-    $("#stylizationImage").attr("src",LOADING_IMAGE);
-    $("#pencilSketchGrayImage").attr("src",LOADING_IMAGE);
-    $("#pencilSketchColorImage").attr("src",LOADING_IMAGE);
-    $("#sketchifyImage").attr("src",LOADING_IMAGE);
-    $("#normalCartoonImage").attr("src",LOADING_IMAGE);
-    $("#cartoonBasicImage").attr("src",LOADING_IMAGE);    
-    $("#cartoonLiteImage").attr("src",LOADING_IMAGE);    
+    $("#grayImage").attr("style",LOADING_IMAGE);
+    $("#edgePreservingImage").attr("style",LOADING_IMAGE);
+    $("#detailEnhanceImage").attr("style",LOADING_IMAGE);
+    $("#stylizationImage").attr("style",LOADING_IMAGE);
+    $("#pencilSketchGrayImage").attr("style",LOADING_IMAGE);
+    $("#pencilSketchColorImage").attr("style",LOADING_IMAGE);
+    $("#sketchifyImage").attr("style",LOADING_IMAGE);
+    $("#normalCartoonImage").attr("style",LOADING_IMAGE);
+    $("#cartoonBasicImage").attr("style",LOADING_IMAGE);    
+    $("#cartoonLiteImage").attr("style",LOADING_IMAGE);    
 }
+
+function showDefaultForSlides() {
+
+    $("#grayImage").attr("style",DEFAULT_IMAGE);
+    $("#edgePreservingImage").attr("style",DEFAULT_IMAGE);
+    $("#detailEnhanceImage").attr("style",DEFAULT_IMAGE);
+    $("#stylizationImage").attr("style",DEFAULT_IMAGE);
+    $("#pencilSketchGrayImage").attr("style",DEFAULT_IMAGE);
+    $("#pencilSketchColorImage").attr("style",DEFAULT_IMAGE);
+    $("#sketchifyImage").attr("style",DEFAULT_IMAGE);
+    $("#normalCartoonImage").attr("style",DEFAULT_IMAGE);
+    $("#cartoonBasicImage").attr("style",DEFAULT_IMAGE);    
+    $("#cartoonLiteImage").attr("style",DEFAULT_IMAGE);    
+}
+
 /**
  * Post an image to s3 with a signed url.
  * 
@@ -502,6 +539,14 @@ function postImagesForCartoon(filename, retry) {
 	                        sleep(1000).then(() => {
 	                            postImagesForCartoon(filename, --retry);
 	                        });
+                        } else {
+                        	showDefaultForSlides();
+                            $('#netErrorConfirm').click(function(e) {
+                                $('#netErrorAlert').modal('hide');
+                                postImagesForCartoon(filename, 0);
+                                return;
+                            });
+                            $('#netErrorAlert').modal('show');
                         }
                     },
                 });
@@ -510,61 +555,5 @@ function postImagesForCartoon(filename, retry) {
             $("#upload-form > input[name^='submit']").click();
         }
     });
-    
+
 }
-
-/*--- Initialize a image slider from jssor --- */
-window.jssor_1_slider_init = function() {
-
-    var jssor_1_options = {
-      $AutoPlay: 1,
-      $AutoPlaySteps: 3,
-      $SlideDuration: 160,
-      $SlideWidth: 330,
-      $SlideSpacing: 3,
-      $ArrowNavigatorOptions: {
-        $Class: $JssorArrowNavigator$,
-        $Steps: 3
-      },
-      $BulletNavigatorOptions: {
-        $Class: $JssorBulletNavigator$,
-        $SpacingX: 16,
-        $SpacingY: 16
-      }
-    };
-
-    var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-    /*#region responsive code begin*/
-
-    var MAX_WIDTH = 990;
-
-    function ScaleSlider() {
-        var containerElement = jssor_1_slider.$Elmt.parentNode;
-        //var containerElement = document.getElementsByClassName('file-upload-content');
-        var containerWidth = containerElement.clientWidth;
-        var containerHeight = containerElement.clientHeight;
-
-        if (containerWidth) {
-
-            var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-            jssor_1_slider.$ScaleWidth(expectedWidth);
-        }
-        else {
-            window.setTimeout(ScaleSlider, 30);
-        }
-    }
-
-    ScaleSlider();
-
-    $Jssor$.$AddEvent(window, "load", ScaleSlider);
-    $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-    $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-    /*#endregion responsive code end*/
-};
-
-jssor_1_slider_init();
-
-
-/*----   ----*/

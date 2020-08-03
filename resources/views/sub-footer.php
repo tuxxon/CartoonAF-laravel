@@ -1,18 +1,18 @@
-
-                <footer class="footer pt-5 container d-flex justify-content-center">
-                    <div>
-                        <p>&copy; 터치즌  2020. All Rights Reserved. </p>
-                        <ul class="list-inline d-flex justify-content-center">
-                            <li class="list-inline-item">
-                                <a href="/privacy">Privacy</a>
+                <footer class="bottom">
+                    <div class="container">
+                        <p class="btm-info1">ⓒ터치즌 2020. All Rights Reserved. </p>
+                        <ul class="btm-info2">
+                            <li>
+                                <a href="/privacy" target="_blank">Privacy</a>
                             </li>
-
-	                        <li class="list-inline-item">
-	                            <a href="https://touchizen.com">Touchizen</a>
-	                        </li>
-	                        <!-- li class="list-inline-item">
-	                            <a href="https://www.youtube.com/channel/UCHTNaLtro_1I6Y3SSywo3Cg">FAQ</a>
-	                        </li-->
+                            <li>
+                                <a href="https://touchizen.com" target="_blank">Touchizen</a>
+                            </li>
+                            <!-- 
+                            <li class="list-inline-item">
+                                <a href="https://www.youtube.com/channel/UCHTNaLtro_1I6Y3SSywo3Cg">FAQ</a>
+                            </li> 
+                            -->
                         </ul>
                     </div>
                 </footer>
@@ -30,14 +30,14 @@
 	                        <div class="modal-body d-flex justify-content-center">
 	                            <ins class = "kakao_ad_area" 
 	                                style = "display:none;" 
-	                                data-ad-unit    = "DAN-1jyg21q34s7qv" 
+	                                data-ad-unit    = "DAN-1hv2pzoqnnx2s" 
 	                                data-ad-width   = "300" 
 	                                data-ad-height  = "250">
 	                            </ins>
 	                        </div>
 	                        <div class="modal-footer d-flex justify-content-center">
 	                            <button type="button p-2" class="try-again-btn" onclick="gaReload2();">
-	                                <span class="try-again-text">다른 사진으로 재시도</span>
+	                                <span class="try-again-text"><em>다른 사진으로 재시도</em><i class="fas fa-undo"></i></span>
 	                            </button>
 	                        </div>
 	                    </div>
@@ -59,14 +59,11 @@
 	            </script>
 
             </div> <!-- End of content -->
-
             <!-- Dark Overlay element -->
             <div class="overlay"></div>
-
         </div> <!-- End of wrapper -->
 
-
-        <!-- Optional JavaScript -->
+         <!-- Optional JavaScript -->
         <script type="text/javascript" src="https://t1.daumcdn.net/kas/static/ba.min.js" async></script>
 
         <script>
@@ -89,9 +86,8 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>    
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 

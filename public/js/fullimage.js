@@ -686,17 +686,17 @@ $confirmBtn.click( function (event) {
             break;
         case "normal-cartoon":
             min = $("#inputNumber0").val();
-            max = $("#inputNumber1").val();                        
+            max = $("#inputNumber1").val();
             apiType = 2;
             break;
         case "cartoon-basic":
             blockSize = $("#inputNumber0").val();
-            C = $("#inputNumber1").val();                        
+            C = $("#inputNumber1").val();
             apiType = 3;
             break;
         case "cartoon-lite":
             blockSize = $("#inputNumber0").val();
-            C = $("#inputNumber1").val();                        
+            C = $("#inputNumber1").val();
             apiType = 4;
             break;
     }
@@ -751,3 +751,4 @@ $initBtn.click( function (event) {
     $("input[type='number']").inputSpinner(config);
     $confirmBtn.trigger("click");
 });
+

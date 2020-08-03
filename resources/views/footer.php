@@ -1,20 +1,23 @@
-<footer class="footer pt-5 container d-flex justify-content-center">
-                <div>
-                    <p>&copy; 터치즌  2020. All Rights Reserved. </p>
-                    <ul class="list-inline d-flex justify-content-center">
-                            <li class="list-inline-item">
-                                <a href="/privacy">Privacy</a>
-                            </li>
 
-	                        <li class="list-inline-item">
-	                            <a href="https://touchizen.com">Touchizen</a>
-	                        </li>
-                        <!-- li class="list-inline-item">
+            <footer class="bottom">
+                <div class="container dflex">
+                    <p class="btm-info1">ⓒ터치즌 2020. All Rights Reserved. </p>
+                    <ul class="btm-info2">
+                        <li>
+                            <a href="/privacy" target="_blank">Privacy</a>
+                        </li>
+                        <li>
+	                        <a href="https://touchizen.com" target="_blank">Touchizen</a>
+	                    </li>
+                        <!-- 
+                        <li class="list-inline-item">
                             <a href="https://www.youtube.com/channel/UCHTNaLtro_1I6Y3SSywo3Cg">FAQ</a>
-                        </li-->
+                        </li> 
+                        -->
                     </ul>
                 </div>
             </footer>
+
             <!-- Modal -->
             <div class="modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="adModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -35,14 +38,14 @@
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button type="button p-2" class="try-again-btn" onclick="gaReload2();">
-                                <span class="try-again-text">다른 사진으로 재시도</span>
+                                <span class="try-again-text"><em>다른 사진으로 재시도</em><i class="fas fa-undo"></i></span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="imageSizeAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="imageSizeAlert" tabindex="-1" role="dialog" aria-labelledby="imageSizeAlertLongTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -56,6 +59,26 @@
                     </div>
                     <div class="modal-footer">
                       <button id="imageSizeConfirm" type="button" class="btn btn-primary">확인</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="netErrorAlert" tabindex="-1" role="dialog" aria-labelledby="netErrorLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="netErrorLabel">네트워크 에러 발생</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body justify-content-center">
+                      <p> 다시 해주세요. </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button id="netErrorConfirm" type="button" class="btn btn-primary">확인</button>
+                      <button id="netErrorCancel" type="button" class="btn btn-primary">취소</button>
                     </div>
                   </div>
                 </div>
@@ -76,6 +99,7 @@
                 }
             </script>
         </div>
+
         <!-- Dark Overlay element -->
         <div class="overlay"></div>
 
@@ -135,6 +159,7 @@
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
+    
         });
 
         $(window).on('beforeunload', function() {
@@ -161,30 +186,30 @@
     </script>
 
     <!-- for AWS API Gateway.. -->
-    <script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
-    <script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
-    <script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
-    <script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
-    <script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
-    <script type="text/javascript" src="lib/url-template/url-template.js"></script>
-    <script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
-    <script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
-    <script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
-    <script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
-    <script type="text/javascript" src="js/apigClient.js"></script>
+    <script type="text/javascript" src="/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="/js/apigClient.js"></script>
 
     <!-- aws sdk -->
     <script type="text/javascript" src="https://sdk.amazonaws.com/js/aws-sdk-2.686.0.min.js"></script>
  
 
     <!-- for AnimalFace.site-->
-    <script src="js/af.js"></script>
+    <script src="/js/af.js"></script>
 
     <!-- To cartoonize an image-->
-    <script src="js/cartoon.js"></script>
+    <script src="/js/cartoon.js"></script>
 
     <!-- To generate UUID  -->
-    <script src="js/UUID.js"></script>
+    <script src="/js/UUID.js"></script>
     <!--script id="dsq-count-scr" src="//codingtrip.disqus.com/count.js" async></script-->
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->

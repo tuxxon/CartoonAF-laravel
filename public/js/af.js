@@ -145,7 +145,7 @@ async function predict() {
                 gtag('event', '여자 결과 알수없음', {'event_category': '여자 결과'});
         }
     }
-    var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
+    var title = "<div class='" + prediction[0].className + "-animal-title'>" + "<p>" + resultTitle +"</p>" + "</div>"
     var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
     var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
     $('.result-message').html(title + explain + celeb);
