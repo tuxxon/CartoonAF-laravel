@@ -414,6 +414,9 @@ function showImagesOnRefreshing() {
     $("#cartoonLiteImage").attr("style",FIXED_IMAGE_URL.format( images[kCARTOONLITE] ));
     $("#cartoonLiteHref").attr("href","/" + hash_v +"/cartoon-lite-using-adaptivethreshold?e="+ext+qCartoonLite);
 
+    /* AF again */
+    init_refresh();
+    predict_refresh();
 }
 
 function showLoadingForSlides() {

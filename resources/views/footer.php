@@ -172,6 +172,7 @@
 
         $(window).on('load', function() {
             //localStorage.clear();
+            $('#gender').val(localStorage.getItem("imageSex"));
             showImagesOnRefreshing();
         });
 
